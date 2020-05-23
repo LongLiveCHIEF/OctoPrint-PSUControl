@@ -104,7 +104,7 @@ class PSUControl(octoprint.plugin.StartupPlugin,
         self._autoOnTriggerGCodeCommandsArray = []
         self.enablePowerOffWarningDialog = True
         self.powerOffWhenIdle = False
-        self.powerOffWhenCommunicationError = False
+        self.powerOffWhenSerialException = False
         self.idleTimeout = 0
         self.idleIgnoreCommands = ''
         self._idleIgnoreCommandsArray = []
@@ -200,9 +200,6 @@ class PSUControl(octoprint.plugin.StartupPlugin,
 
         self.powerOffWhenIdle = self._settings.get_boolean(["powerOffWhenIdle"])
         self._logger.debug("powerOffWhenIdle: %s" % self.powerOffWhenIdle)
-
-        self.powerOffWhenCommunicationError = self._settings.get_boolean(["powerOffWhenCommunicationError"])
-        self._logger.debug("powerOffWhenCommunicationError: %s" % self.powerOffWhenCommunicationError)
 
         self.idleTimeout = self._settings.get_int(["idleTimeout"])
         self._logger.debug("idleTimeout: %s" % self.idleTimeout)
@@ -775,8 +772,7 @@ class PSUControl(octoprint.plugin.StartupPlugin,
         )
 
     def on_event(self, event, payload):
-        if event == Events.ERROR
-            self.turn_psu_off()
+        if event == Events
 
 __plugin_name__ = "PSU Control"
 __plugin_pythoncompat__ = ">=2.7,<4"
